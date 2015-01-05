@@ -1,0 +1,2 @@
+#!/bin/bash
+xboxdrv --config /home/xbian/xbox/mapping_xbox --detach-kernel-driver --silent &

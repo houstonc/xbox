@@ -1,0 +1,28 @@
+#!/bin/bash
+echo -e "Installing packages..." 
+apt-get install xboxdrv 
+echo -e "......................................................DONE\n";
+
+
+cd /home/xbian/xbox
+echo -e "Installing script..." 
+chown xbian:xbian xbox
+chown root:root rc.local
+chown xbian:xbian mapping_xbox 
+chown xbian:xbian mapping_keyboard
+
+chmod 640 mapping_xbox 
+chmod 666 mapping_keyboard
+chmod 751 xbox
+chmod 751 rc.local 
+
+mv /etc/rc.local /etc/rc.local.bak
+cp rc.local /etc/rc.local 
+mv /usr/local/share/xbmc/system/keymaps/keyboard.xml /usr/local/share/xbmc/system/keymaps/keyboard.bak
+cp mapping_keyboard /usr/local/share/xbmc/system/keymaps/keyboard.xml
+echo -e "......................................................DONE\n";
+
+
+echo -e "Restarting..." 
+reboot
+echo -e "......................................................DONE\n";
